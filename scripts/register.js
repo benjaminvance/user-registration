@@ -37,10 +37,19 @@ function validatePass(){
     let password=txtPass.val();
     if(password.length<6){
         txtPass.css("background","#ff9898");
+        displayError("The password is too short :(")
     }
     else{
         txtPass.css("background","#64ce66");
     }
+}
+
+function displayError(msg){
+    $("#alertError").removeClass("hide").text(msg);
+}
+
+function hideError(){
+    $("#alertError").addClass("hide");
 }
 
 function register(){
@@ -62,6 +71,8 @@ function register(){
     if(isValid(newUser)){
         console.log(newUser);
         saveUser(newUser);
+    }else{
+        displayError("Please complete all fields");
     }
 }
 
